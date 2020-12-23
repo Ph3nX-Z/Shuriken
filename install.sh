@@ -1,7 +1,20 @@
-apt install python3
 
-apt install python3-pip
+FILE="/etc/shadow"
 
-pip3 install requests
+if ! [[ $(stat -c "%A" $FILE) =~ "r" ]]; then
+  apt install python3
+  apt install python3-pip
+  pip3 install requests
+  cp ./Shuriken.py /bin/shuriken
+else 
+  echo '[-] Run The Script As Root'
 
-cp ./Shuriken.py /bin/shuriken
+fi
+
+exit 0
+
+
+
+
+
+
