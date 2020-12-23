@@ -55,7 +55,6 @@ parse = argparse.ArgumentParser()
 parse.add_argument("-w","--wordlist", help="To specify the wordlist", required=True)
 parse.add_argument("-u", "--url", help="To specify the URL", required=True)
 parse.add_argument("-p", "--proxies", help="Add proxys", required=False)
-parse.add_argument("-o", "--output", help="output file", required=False)
 parse.add_argument("-d", "--delay", help="Delay between each requests", required=False, type=int)
 args = parse.parse_args()
 
@@ -82,31 +81,30 @@ def verify():
 def process_proxies(proxies):
     proxies_dico_return = {}
     proxies = proxies.split(',')
-    if len(proxies) == 1:
+    if "http" in proxies[0]:
         proxies_dico_return["http"] = proxies[0]
-        proxies_dico_return["https"] = proxies[0]
-        return proxies_dico_return
-    elif len(proxies) > 1:
-        proxies_dico_return["http"] = proxies[0]
-        proxies_dico_return["https"] = proxies[1]
         return proxies_dico_return
 
 def fuzzer(wordlist):
     for i in wordlist:
         response = session.get(args.url.replace('NINJA',i),headers={'Cache-Control': 'no-cache',"Pragma": "no-cache"})
         if response.status_code == 200:
-            print('\033[92m' + f"[NINJA] Directory : {i} ({response.status_code})[Size : {len(response.content)}]"+'\033[0m')
+            print('\033[92m' + f"[NINJA] Response : {i} ({response.status_code})[Size : {len(response.content)}]"+'\033[0m')
         elif response.status_code == 403:
-            print('\033[93m' + f"[NINJA] Directory : {i} ({response.status_code})[Size : {len(response.content)}]"+'\033[0m')
+            print('\033[93m' + f"[NINJA] Response : {i} ({response.status_code})[Size : {len(response.content)}]"+'\033[0m')
+        elif response.status_code == 401:
+            print('\033[93m' + f"[NINJA] Response : {i} ({response.status_code})[Size : {len(response.content)}] --> Authentication Panel"+'\033[0m')
 
 def fuzzer_delay(wordlist):
     for i in wordlist:
         time.sleep(args.delay)
         response = session.get(args.url.replace('NINJA',i),headers={'Cache-Control': 'no-cache',"Pragma": "no-cache"})
         if response.status_code == 200:
-            print('\033[92m' + f"[NINJA] Directory : {i} ({response.status_code})[Size : {len(response.content)}]"+'\033[0m')
+            print('\033[92m' + f"[NINJA] Response : {i} ({response.status_code})[Size : {len(response.content)}]"+'\033[0m')
         elif response.status_code == 403:
-            print('\033[93m' + f"[NINJA] Directory : {i} ({response.status_code})[Size : {len(response.content)}]"+'\033[0m')
+            print('\033[93m' + f"[NINJA] Response : {i} ({response.status_code})[Size : {len(response.content)}]"+'\033[0m')
+        elif response.status_code == 401:
+            print('\033[93m' + f"[NINJA] Response : {i} ({response.status_code})[Size : {len(response.content)}] --> Authentication Panel"+'\033[0m')
 ################################################################ Functions
 
 ################################################################ Data Processing
@@ -123,7 +121,10 @@ session = requests.Session()
 if args.proxies != None and use_proxy == True:
     proxies_dico = process_proxies(args.proxies)                   # Get Proxies
     for key in proxies_dico:
-        print(f"[+] Using Proxy :{key} : {proxies_dico[key]}")
+        if "https" in proxies_dico[key]:
+            print(f"[+] Using Proxy :https : {proxies_dico[key]}")
+        else:
+            print(f"[+] Using Proxy :{key} : {proxies_dico[key]}")
     session.proxies = proxies_dico
 else:
     if use_proxy == False:
@@ -134,7 +135,8 @@ else:
 ################################################################ Data processing
 
 ################################################################ Fuzzing
-
+if args.delay != None:
+    print(f"[+] Requests delay set to {args.delay} seconds")
 print('\033[94m'+f"[*] Fuzzing URL : {args.url}\n"+'\033[0m')
 if args.delay == None:
     fuzzer(wordlist_data)
