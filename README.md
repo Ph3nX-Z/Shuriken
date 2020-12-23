@@ -10,7 +10,7 @@ Shuriken is a web fuzzer that include proxies support and with which you will be
 ### Linux :
 ```sh
 Set execution perms : chmod +x install.sh
-Run install .sh : sudo ./install.sh
+Run install .sh : sudo bash install.sh
 shuriken -u url -w wordlist [-d] [-p]
 ```
 
