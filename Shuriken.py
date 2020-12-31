@@ -159,7 +159,7 @@ if args.threads != None:
     print(f"[+] Workers : {args.threads} workers")
 print('\033[94m'+f"[*] Fuzzing URL : {args.url}\n"+'\033[0m')
 if args.threads != None:
-    os.system("katana -w {} -u {} -t {}")
+    os.system(f"Katana -w {args.wordlist} -u {args.url} -t {args.threads}")
 elif args.delay == None:
     fuzzer(wordlist_data)
 else:

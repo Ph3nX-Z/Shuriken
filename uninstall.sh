@@ -1,2 +1,2 @@
 rm /bin/shuriken
-rm /bin/katana
+rm /bin/Katana
