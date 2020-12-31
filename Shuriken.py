@@ -119,7 +119,7 @@ def fuzzer_delay(wordlist):
 ################################################################ Data Processing
 
 if args.threads != None:
-    if args.threads > 64:
+    if args.threads > 100:
         print('\033[91m'+"[-] Too much threads, may be dangerous for your computer, abording"+'\033[0m')
         sys.exit()
     if args.threads > 32:
