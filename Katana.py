@@ -60,4 +60,4 @@ if __name__ == "__main__":
     proc = multi_fuzz(threads)
     proc.start()
     stop = time.time()
-    print(f"[+] Parsed wordlist in {start-stop} seconds")
+    print(f"[+] Parsed wordlist in {stop-start} seconds")
