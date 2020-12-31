@@ -41,9 +41,9 @@ Laptop :
   * RAM      : 4Go
   * PROC     : A9-9420 3,6Ghz 2Cores
   * GRAPHICS : AMD Radeon R5
-![](benchmark.png)
-
+  
 --> Wordlist : 200 491 words
+![](benchmark.png)
 
 ## Media
 
