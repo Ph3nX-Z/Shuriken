@@ -46,7 +46,7 @@ class multi_fuzz():
 
 if __name__ == "__main__":
     threads = args.threads
-    if threads > 64:
+    if threads > 100:
         reponse = input(f"Are you sure you want to use {threads} process (May be Dangerous) Y/N ? :").upper()
         if reponse == 'N':
             sys.exit()
