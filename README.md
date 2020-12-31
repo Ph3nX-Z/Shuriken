@@ -35,6 +35,14 @@ shuriken -u http://mysite/index.php?id=NINJA -w sqlipayloads
 shuriken -u http://mysite/logon.php?user=admin&password=NINJA -w passwords
 ```
 
+## Benchmark
+
+Laptop : 
+  * RAM      : 4Go
+  * PROC     : A9-9420 3,6Ghz 2Cores
+  * GRAPHICS : AMD Radeon R5
+![](benchmark.png)
+
 ## Media
 
 ### Invalid Proxy Detection
