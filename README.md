@@ -61,7 +61,7 @@ _*Wordlist : 200 491 words*_
 ![](photo4.PNG)
 
 ### Threading mode (200 000 words)
-![](photo5.PNG)
+![](photo5.png)
 
 ## Contributing
 
