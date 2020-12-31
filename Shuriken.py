@@ -59,7 +59,7 @@ parse.add_argument("-w","--wordlist", help="To specify the wordlist", required=T
 parse.add_argument("-u", "--url", help="To specify the URL", required=True)
 parse.add_argument("-p", "--proxies", help="Add proxys", required=False)
 parse.add_argument("-d", "--delay", help="Delay between each requests", required=False, type=int)
-parse.add_argument("-t", "--threads", help="It use katana, proxy and delay will be ignored", required=False, type=int)
+parse.add_argument("-t", "--threads", help="It uses katana, proxy and delay will be ignored", required=False, type=int)
 args = parse.parse_args()
 
 ################################################################ Args
