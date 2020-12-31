@@ -1,9 +1,12 @@
+#!/usr/bin/python3
+
 import requests
 import sys
 import argparse
 import os
 import random
 import time
+import threading
 
 banner_ghost = """
   .-')    ('-. .-.             _  .-')          .-. .-')     ('-.       .-') _  
@@ -56,6 +59,7 @@ parse.add_argument("-w","--wordlist", help="To specify the wordlist", required=T
 parse.add_argument("-u", "--url", help="To specify the URL", required=True)
 parse.add_argument("-p", "--proxies", help="Add proxys", required=False)
 parse.add_argument("-d", "--delay", help="Delay between each requests", required=False, type=int)
+parse.add_argument("-t", "--threads", help="It use katana, proxy and delay will be ignored", required=False, type=int)
 args = parse.parse_args()
 
 ################################################################ Args
@@ -105,9 +109,23 @@ def fuzzer_delay(wordlist):
             print('\033[93m' + f"[NINJA] Response : {i} ({response.status_code})[Size : {len(response.content)}]"+'\033[0m')
         elif response.status_code == 401:
             print('\033[93m' + f"[NINJA] Response : {i} ({response.status_code})[Size : {len(response.content)}] --> Authentication Panel"+'\033[0m')
+
+
 ################################################################ Functions
 
+################################################################ Multithread
+################################################################ Multithread
+
 ################################################################ Data Processing
+
+if args.threads != None:
+    if args.threads > 64:
+        print('\033[91m'+"[-] Too much threads, may be dangerous for your computer, abording"+'\033[0m')
+        sys.exit()
+    if args.threads > 32:
+        validation = input('\033[91m'+"[-] That amount of thread may cause your screen to lag, continue ? Y/N :"+'\033[0m').upper()
+        if validation == "N":
+            sys.exit()
 
 use_proxy = verify()
 
@@ -137,8 +155,12 @@ else:
 ################################################################ Fuzzing
 if args.delay != None:
     print(f"[+] Requests delay set to {args.delay} seconds")
+if args.threads != None:
+    print(f"[+] Workers : {args.threads} workers")
 print('\033[94m'+f"[*] Fuzzing URL : {args.url}\n"+'\033[0m')
-if args.delay == None:
+if args.threads != None:
+    os.system("katana -w {} -u {} -t {}")
+elif args.delay == None:
     fuzzer(wordlist_data)
 else:
     fuzzer_delay(wordlist_data)
