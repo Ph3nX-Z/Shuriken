@@ -3,7 +3,7 @@ Web Fuzzer
 
 ## Presentation
 
-Shuriken is a web fuzzer that includes proxies support and with which you will be able to do some recon : sqli, web discovery, password cracking, ...
+Shuriken is a threaded web fuzzer that includes proxies support and with which you will be able to do some recon : sqli, web discovery, password cracking, ...
 
 ## Usage
 
