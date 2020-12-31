@@ -35,6 +35,11 @@ shuriken -u http://mysite/index.php?id=NINJA -w sqlipayloads
 shuriken -u http://mysite/logon.php?user=admin&password=NINJA -w passwords
 ```
 
+### Test Site:
+```sh
+python3 testsite.py
+```
+
 ## Benchmark
 
 Laptop : 
