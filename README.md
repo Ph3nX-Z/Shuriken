@@ -43,6 +43,8 @@ Laptop :
   * GRAPHICS : AMD Radeon R5
 ![](benchmark.png)
 
+--> Wordlist : 200 491 words
+
 ## Media
 
 ### Invalid Proxy Detection
