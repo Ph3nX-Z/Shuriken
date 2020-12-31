@@ -30,7 +30,6 @@ def fuzzer(part,threads):
 
 class multi_fuzz():
     def __init__(self,threads):
-        self.size = 10000000
         self.threads = threads
     def start(self):
         jobs = []
@@ -38,12 +37,10 @@ class multi_fuzz():
             process = multiprocessing.Process(target=fuzzer,args=(str(i),threads))
             jobs.append(process)
             process = None
-
-    # Start the processes (i.e. calculate the random number lists)      
+    
         for j in jobs:
             j.start()
 
-    # Ensure all of the processes have finished
         for j in jobs:
             j.join()
 
