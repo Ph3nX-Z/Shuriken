@@ -4,6 +4,7 @@ import requests
 import argparse
 import random
 import sys
+import time
 
 parse = argparse.ArgumentParser()
 parse.add_argument("-w","--wordlist", help="To specify the wordlist", required=True)
@@ -16,6 +17,7 @@ def chunks(myList, parts):
 
 def fuzzer(part,threads):
     with open(args.wordlist,"r") as file:
+        global wordlist
         wordlist = file.read().split("\n")
     wordlists = chunks(wordlist,threads)
     session = requests.Session()
@@ -46,7 +48,7 @@ class multi_fuzz():
 
 if __name__ == "__main__":
     threads = args.threads
-    if threads > 100:
+    if threads > 64:
         reponse = input(f"Are you sure you want to use {threads} process (May be Dangerous) Y/N ? :").upper()
         if reponse == 'N':
             sys.exit()
@@ -54,5 +56,8 @@ if __name__ == "__main__":
             sys.exit()
         else:
             pass
+    start = time.time()
     proc = multi_fuzz(threads)
     proc.start()
+    stop = time.time()
+    print(f"[+] {len(wordlist)} Packets in {start-stop} seconds")
