@@ -53,7 +53,7 @@ _*Wordlist : 200 491 words*_
 
 ### Stats
 |   Tool | Time |
-|--------|------|
+|--------|-------------------------|
 |Shuriken| 42,14 sec|
 | Dirb   | 108,42 sec|
 |  ffuf  | 26,81 sec|
