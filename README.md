@@ -52,11 +52,11 @@ _*Wordlist : 200 491 words*_
 ![](benchmark.png)
 
 ### Stats
-|   Tool | Time |
+|   Tool | Time                    |
 |--------|-------------------------|
-|Shuriken| 42,14 sec|
-| Dirb   | 108,42 sec|
-|  ffuf  | 26,81 sec|
+|Shuriken| 42,14 sec               |
+| Dirb   | 108,42 sec              |
+|  ffuf  | 26,81 sec               |
 ## Media
 
 ### Invalid Proxy Detection
