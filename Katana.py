@@ -55,7 +55,7 @@ if __name__ == "__main__":
         elif reponse != 'Y':
             pass
         else:
-            pass
+            sys.exit()
     start = time.time()
     proc = multi_fuzz(threads)
     proc.start()
