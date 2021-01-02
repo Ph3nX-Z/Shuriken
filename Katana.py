@@ -53,7 +53,7 @@ if __name__ == "__main__":
         if reponse == 'N':
             sys.exit()
         elif reponse != 'Y':
-            sys.exit()
+            pass
         else:
             pass
     start = time.time()
