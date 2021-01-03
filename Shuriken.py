@@ -60,8 +60,6 @@ parse.add_argument("-u", "--url", help="To specify the URL", required=True)
 parse.add_argument("-p", "--proxies", help="Add proxys", required=False)
 parse.add_argument("-d", "--delay", help="Delay between each requests", required=False, type=int)
 parse.add_argument("-t", "--threads", help="It uses katana, proxy and delay will be ignored", required=False, type=int)
-parse.add_argument("-r", "--recursive", help="It uses katana, proxy and delay will be ignored, max recursion", required=False, type=int)
-
 args = parse.parse_args()
 
 ################################################################ Args
@@ -161,10 +159,7 @@ if args.threads != None:
     print(f"[+] Workers : {args.threads} workers")
 print('\033[94m'+f"[*] Fuzzing URL : {args.url}\n"+'\033[0m')
 if args.threads != None:
-    if args.recursive != None:
-        os.system(f"Katana -w {args.wordlist} -u {args.url} -t {args.threads} -r {args.recursive}")
-    else:
-        os.system(f"Katana -w {args.wordlist} -u {args.url} -t {args.threads}")
+    os.system(f"Katana -w {args.wordlist} -u {args.url} -t {args.threads}")
 elif args.delay == None:
     fuzzer(wordlist_data)
 else:
