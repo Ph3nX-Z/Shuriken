@@ -73,13 +73,16 @@ class multi_fuzz():
 
         for j in jobs:
             j.join()
+        print(directories,args.recursive)
         if args.recursive != None:
             if len(directories)<=args.recursive:
                 for directory in directories:
                     print(f"[+] Entering {directory}")
-                    os.system(f"katana -w {args.wordlist} -u {args.url.replace('NINJA',directory+'/NINJA')} -t {args.threads}")
+                    os.system(f"Katana -w {args.wordlist} -u {args.url.replace('NINJA',directory+'/NINJA')} -t {args.threads}")
             else:
                 print('[-] Too much recursions, abording !')
+        else:
+            print("[*] No Recursion")
 if __name__ == "__main__":
     threads = args.threads
     if threads > 64:
