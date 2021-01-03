@@ -5,6 +5,7 @@ import argparse
 import random
 import sys
 import time
+import os
 
 parse = argparse.ArgumentParser()
 parse.add_argument("-w","--wordlist", help="To specify the wordlist", required=True)
@@ -40,17 +41,17 @@ def fuzzer_recursive(part,threads):
     for i in wordlists[int(part)]:
         response = session.get(args.url.replace('NINJA',i),headers={'Cache-Control': 'no-cache',"Pragma": "no-cache"})
         if response.status_code == 200:
-            print('\033[92m' + f"[KATANA] Response : {i} ({response.status_code})[Size : {len(response.content)}]"+'\033[0m')
+            print('\033[92m' + f"[KATANA] Response : {args.url.replace('NINJA',i)} ({response.status_code})[Size : {len(response.content)}]"+'\033[0m')
             if '/' in i:
                 directories.append(str(i))
         elif response.status_code == 403:
-            print('\033[93m' + f"[KATANA] Response : {i} ({response.status_code})[Size : {len(response.content)}]"+'\033[0m')
+            print('\033[93m' + f"[KATANA] Response : {args.url.replace('NINJA',i)} ({response.status_code})[Size : {len(response.content)}]"+'\033[0m')
             if '/' in i:
                 directories.append(str(i))
         elif response.status_code == 401:
             if '/' in i:
                 directories.append(str(i))
-            print('\033[93m' + f"[KATANA] Response : {i} ({response.status_code})[Size : {len(response.content)}] --> Authentication Panel"+'\033[0m')
+            print('\033[93m' + f"[KATANA] Response : {args.url.replace('NINJA',i)} ({response.status_code})[Size : {len(response.content)}] --> Authentication Panel"+'\033[0m')
 
 class multi_fuzz():
     def __init__(self,threads):
@@ -73,10 +74,11 @@ class multi_fuzz():
         for j in jobs:
             j.join()
         if args.recursive != None:
-            if len(directories)<args.recursive:
+            if len(directories)<=args.recursive:
                 for directory in directories:
                     os.system(f"katana -w {args.wordlist} -u {args.url.replace('NINJA',directory+'NINJA')} -t {args.threads}")
-
+            else:
+                print('[-] Too much recursions, abording !')
 if __name__ == "__main__":
     threads = args.threads
     if threads > 64:
