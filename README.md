@@ -61,9 +61,9 @@ _*Wordlist : 200 491 words*_
 
 ### Compatibility
 
-|  Options   | Shuriken | KATANA   |
-|------------|----------|----------|
-| proxy      | OO       |   XX     |
+|  Options   | Shuriken | KATANA                                   .|
+|------------|----------|-------------------------------------------|
+| proxy      | OO       |   XX                                     |
 | pattern    | OO       |   XX     |
 | bytechange | XX       |   OO     |
 | delay      | OO       |   XX     |
