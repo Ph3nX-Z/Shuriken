@@ -22,26 +22,29 @@ def fuzzer(part,threads):
         wordlist = file.read().split("\n")
     wordlists = chunks(wordlist,threads)
     session = requests.Session()
-    for i in wordlists[int(part)]:
-        response = session.get(args.url.replace('NINJA',i),headers={'Cache-Control': 'no-cache',"Pragma": "no-cache"})
-        if response.status_code == 200:
-            if args.bytechange != None:
-                if len(response.content) != args.bytechange:
+    try:
+        for i in wordlists[int(part)]:
+            response = session.get(args.url.replace('NINJA',i),headers={'Cache-Control': 'no-cache',"Pragma": "no-cache"})
+            if response.status_code == 200:
+                if args.bytechange != None:
+                    if len(response.content) != args.bytechange:
+                        print('\033[92m' + f"[KATANA] Response : {i} ({response.status_code})[Size : {len(response.content)}]"+'\033[0m')
+                else:
                     print('\033[92m' + f"[KATANA] Response : {i} ({response.status_code})[Size : {len(response.content)}]"+'\033[0m')
-            else:
-                print('\033[92m' + f"[KATANA] Response : {i} ({response.status_code})[Size : {len(response.content)}]"+'\033[0m')
-        elif response.status_code == 403:
-            if args.bytechange != None:
-                if len(response.content) != args.bytechange:
+            elif response.status_code == 403:
+                if args.bytechange != None:
+                    if len(response.content) != args.bytechange:
+                        print('\033[93m' + f"[KATANA] Response : {i} ({response.status_code})[Size : {len(response.content)}]"+'\033[0m')
+                else:
                     print('\033[93m' + f"[KATANA] Response : {i} ({response.status_code})[Size : {len(response.content)}]"+'\033[0m')
-            else:
-                print('\033[93m' + f"[KATANA] Response : {i} ({response.status_code})[Size : {len(response.content)}]"+'\033[0m')
-        elif response.status_code == 401:
-            if args.bytechange != None:
-                if len(response.content) != args.bytechange:
+            elif response.status_code == 401:
+                if args.bytechange != None:
+                    if len(response.content) != args.bytechange:
+                        print('\033[93m' + f"[KATANA] Response : {i} ({response.status_code})[Size : {len(response.content)}] --> Authentication Panel"+'\033[0m')
+                else:
                     print('\033[93m' + f"[KATANA] Response : {i} ({response.status_code})[Size : {len(response.content)}] --> Authentication Panel"+'\033[0m')
-            else:
-                print('\033[93m' + f"[KATANA] Response : {i} ({response.status_code})[Size : {len(response.content)}] --> Authentication Panel"+'\033[0m')
+    except KeyboardInterrupt:
+        print("[-] Interrupted by User !")
 class multi_fuzz():
     def __init__(self,threads):
         self.threads = threads
@@ -53,10 +56,7 @@ class multi_fuzz():
             process = None
 
         for j in jobs:
-            try:
-                j.start()
-            except KeyboardInterrupt:
-                print("Interrupted")
+            j.start()
 
         for j in jobs:
             j.join()
