@@ -53,7 +53,10 @@ class multi_fuzz():
             process = None
 
         for j in jobs:
-            j.start()
+            try:
+                j.start()
+            except KeyboardInterrupt:
+                print("Interrupted")
 
         for j in jobs:
             j.join()
