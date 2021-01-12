@@ -74,7 +74,7 @@ _*Wordlist : 200 491 words*_
 | speed      | 1000 w/s | 4800 w/s |
 | Detected   | 40%      | 100%     |
 | For CTF    | No       | Yes      |
-| For Reco   | Yes      | No       |
+| For Reconnaissance  | Yes      | No       |
 
 
 ## Media
