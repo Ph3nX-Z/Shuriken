@@ -73,7 +73,6 @@ _*Wordlist : 200 491 words*_
 | Detected   | 40%      | 100%     |
 | For CTF    | No       | Yes      |
 | For Reco   | Yes      | No       |
-|------------|----------|----------|
 
 
 ## Media
