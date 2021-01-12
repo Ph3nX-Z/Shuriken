@@ -83,7 +83,7 @@ if __name__ == "__main__":
     proc.start()
     stop = time.time()
     if proc.status == "skipped":
-        print("[-] Cancelled by user !)
+        print("[-] Cancelled by user !")
     else:
         print(f"[+] Parsed wordlist in {stop-start} seconds")
 
