@@ -62,7 +62,10 @@ class multi_fuzz():
                 print("[-] Interrupted by User !")
 
         for j in jobs:
-            j.join()
+            try:
+                j.join()
+            except KeyboardInterrupt:
+                print("[-] Interrupted by User !")
 
 if __name__ == "__main__":
     threads = args.threads
