@@ -8,15 +8,28 @@ Shuriken is a threaded web fuzzer that includes proxies support and with which y
 ## Usage
 
 ### Linux :
+
+#### Install
 ```sh
 Set execution perms : chmod +x install.sh
 Run install .sh : sudo bash install.sh
-shuriken -u url -w wordlist [-d] [-p]
+```
+or
+```sh
+python3 EasySetup.py
+```
+#### Uninstall
+```sh
+Set execution perms : chmod +x uninstall.sh
+Run install .sh : sudo bash uninstall.sh
+```
+or
+```sh
+python3 EasySetup.py
 ```
 
 ### Windows :
 ```sh
-pip3 install requests
 run shuriken from terminal or wsl
 ```
 
