@@ -62,18 +62,18 @@ _*Wordlist : 200 491 words*_
 ### Compatibility
 
 |  Options   | Shuriken | KATANA   |
-|----------------------------------|
+|------------|----------|----------|
 | proxy      | OO       |   XX     |
 | pattern    | OO       |   XX     |
 | bytechange | XX       |   OO     |
 | delay      | OO       |   XX     |
 | threaded   | XX       |   OO     |
-|-           |  -       |-         |
+|------------|----------|----------|
 | speed      | 1000 w/s | 4800 w/s |
 | Detected   | 40%      | 100%     |
 | For CTF    | No       | Yes      |
 | For Reco   | Yes      | No       |
-|----------------------------------|
+|------------|----------|----------|
 
 
 ## Media
