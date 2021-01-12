@@ -82,8 +82,11 @@ if __name__ == "__main__":
     proc = multi_fuzz(threads)
     proc.start()
     stop = time.time()
+    compteur = 0
     if proc.status == "skipped":
-        print("[-] Cancelled by user !")
+        if compteur == 0:
+            print("[-] Cancelled by user !")
+            compteur += 1
     else:
         print(f"[+] Parsed wordlist in {stop-start} seconds")
 
