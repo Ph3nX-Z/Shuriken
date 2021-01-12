@@ -48,26 +48,25 @@ def fuzzer(part,threads):
 class multi_fuzz():
     def __init__(self,threads):
         self.threads = threads
+        self.status = "running"
     def start(self):
         jobs = []
         for i in range(self.threads):
             process = multiprocessing.Process(target=fuzzer,args=(str(i),threads))
             jobs.append(process)
             process = None
-        skipped = False
+        global skipped
         for j in jobs:
             try:
                 j.start()
             except KeyboardInterrupt:
-                skipped = True
+                self.status = "skipped"
 
         for j in jobs:
             try:
                 j.join()
             except KeyboardInterrupt:
-                skipped = True
-        if skipped:
-            print('[-] Interrupted by user !')
+                skipped = "skipped"
 
 if __name__ == "__main__":
     threads = args.threads
@@ -83,4 +82,10 @@ if __name__ == "__main__":
     proc = multi_fuzz(threads)
     proc.start()
     stop = time.time()
-    print(f"[+] Parsed wordlist in {stop-start} seconds")
+    if proc.status == "skipped":
+        print("[-] Cancelled by user !)
+    else:
+        print(f"[+] Parsed wordlist in {stop-start} seconds")
+
+
+
