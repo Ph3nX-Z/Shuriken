@@ -68,6 +68,8 @@ _*Wordlist : 200 491 words*_
 | bytechange | XX       |   OO     |
 | delay      | OO       |   XX     |
 | threaded   | XX       |   OO     |
+
+|Option | Shuriken | Katana |
 |------------|----------|----------|
 | speed      | 1000 w/s | 4800 w/s |
 | Detected   | 40%      | 100%     |
