@@ -54,18 +54,20 @@ class multi_fuzz():
             process = multiprocessing.Process(target=fuzzer,args=(str(i),threads))
             jobs.append(process)
             process = None
-
+        skipped = False
         for j in jobs:
             try:
                 j.start()
             except KeyboardInterrupt:
-                print("[-] Interrupted by User !")
+                skipped = True
 
         for j in jobs:
             try:
                 j.join()
             except KeyboardInterrupt:
-                print("[-] Interrupted by User !")
+                skipped = True
+        if skipped:
+            print('[-] Interrupted by user !')
 
 if __name__ == "__main__":
     threads = args.threads
