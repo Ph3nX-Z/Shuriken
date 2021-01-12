@@ -9,41 +9,41 @@ import time
 import threading
 
 banner_ghost = """
-  .-')    ('-. .-.             _  .-')          .-. .-')     ('-.       .-') _  
- ( OO ). ( OO )  /            ( \( -O )         \  ( OO )  _(  OO)     ( OO ) ) 
-(_)---\_),--. ,--. ,--. ,--.   ,------.  ,-.-') ,--. ,--. (,------.,--./ ,--,'  
-/    _ | |  | |  | |  | |  |   |   /`. ' |  |OO)|  .'   /  |  .---'|   \ |  |\  
-\  :` `. |   .|  | |  | | .-') |  /  | | |  |  \|      /,  |  |    |    \|  | ) 
- '..`''.)|       | |  |_|( OO )|  |_.' | |  |(_/|     ' _)(|  '--. |  .     |/  
-.-._)   \|  .-.  | |  | | `-' /|  .  '.',|  |_.'|  .   \   |  .--' |  |\    |   
-\       /|  | |  |('  '-'(_.-' |  |\  \(_|  |   |  |\   \  |  `---.|  | \   |   
+  .-')    ('-. .-.             _  .-')          .-. .-')     ('-.       .-') _
+ ( OO ). ( OO )  /            ( \( -O )         \  ( OO )  _(  OO)     ( OO ) )
+(_)---\_),--. ,--. ,--. ,--.   ,------.  ,-.-') ,--. ,--. (,------.,--./ ,--,'
+/    _ | |  | |  | |  | |  |   |   /`. ' |  |OO)|  .'   /  |  .---'|   \ |  |\
+\  :` `. |   .|  | |  | | .-') |  /  | | |  |  \|      /,  |  |    |    \|  | )
+ '..`''.)|       | |  |_|( OO )|  |_.' | |  |(_/|     ' _)(|  '--. |  .     |/
+.-._)   \|  .-.  | |  | | `-' /|  .  '.',|  |_.'|  .   \   |  .--' |  |\    |
+\       /|  | |  |('  '-'(_.-' |  |\  \(_|  |   |  |\   \  |  `---.|  | \   |
  `-----' `--' `--'  `-----'    `--' '--' `--'   `--' '--'  `------'`--'  `--'  Follow the project : https://github.com/Ph3nX-Z/Shuriken \n"""
 
 shuriken = """
-       --                
-       :hs-              
-       :hhhs-            
+       --
+       :hs-
+       :hhhs-
        :hhhhhs:---------`
        :hhhyyyhhhhhddds:`
-     `:syh-` `:ddddho-   
+     `:syh-` `:ddddho-
    ./syhhh.   -ddh+.            Follow the project : https://github.com/Ph3nX-Z/Shuriken
- .+yhdddddhsoshhh:       
-`::://////+hdddhh:       
-           `/hddh:       
-             `+hd:       
+ .+yhdddddhsoshhh:
+`::://////+hdddhh:
+           `/hddh:
+             `+hd:
                `+-  \n """
 
 banner = "丂卄ㄩ尺讠长🝗𝓝"
 banner_big = """
--:::::::::::::::-      oyy    oys                           -////////////-     -o/          `hh+       -o:                                      
-sNNNNMMNNNNNNNNNd      dMM    mMM        ++:       ++-      oMMNNNNNNNNMMy     +NMh.        `MMs   `:smMMm:       /mmmmmmm.    .+sss:    `+sso. 
+-:::::::::::::::-      oyy    oys                           -////////////-     -o/          `hh+       -o:
+sNNNNMMNNNNNNNNNd      dMM    mMM        ++:       ++-      oMMNNNNNNNNMMy     +NMh.        `MMs   `:smMMm:       /mmmmmmm.    .+sss:    `+sso.
     oMM`               dMM    mMM        MMy      `MMo      oMM`       NMy      -h+`        `MMs +dMMNy+.         /MM:::::`   oMhdMMMh  .NMoyMm-
-   `NMd//////o:`  `::::mMM::::NMM::::`   MMy      `MMo      oMMddddddddMMy   ohhhh+         `MMs `o/.             /MM          ` mMMMMs yMm  .          
-   +MMNNNNNNMMM-  .MMMMMMMMMMMMMMMMMM/   MMy      `MMo      sMM+++dMN++hdo   +ssMMy       sMMMMMMMMMMMMMMMMM/sNNNNNMMNNNNh      /MM/MMM:MM+     
-   :++      mMd        dMM    mMM        MMy      `MMo      dMN   -MMo          MMy       .-:MMy--:mMd:-----``....oMM.....      dMh hMMNMN`     
-           -MM+        dMM    mMM        MMmyyyyyyhMMo     :MMo    -mMm+.       MMy.+:      `MMs   .dMN+`         /MM       -+ -MM: -MMMMs      
-        syyNMh         dMM    mMM        osssssssssMMo    +MMh       +dMMmy:    MMMMMo      .MMy/    /mMMdo:`     /MMmmmmm+/NMdmN+   hMMm.      
-        shhho          dMM    mMM                  ``    .hMo          .+yd.   -NMh/`       +MMMmhs    :smMh.     `-------`  -:-`    `:`        
+   `NMd//////o:`  `::::mMM::::NMM::::`   MMy      `MMo      oMMddddddddMMy   ohhhh+         `MMs `o/.             /MM          ` mMMMMs yMm  .
+   +MMNNNNNNMMM-  .MMMMMMMMMMMMMMMMMM/   MMy      `MMo      sMM+++dMN++hdo   +ssMMy       sMMMMMMMMMMMMMMMMM/sNNNNNMMNNNNh      /MM/MMM:MM+
+   :++      mMd        dMM    mMM        MMy      `MMo      dMN   -MMo          MMy       .-:MMy--:mMd:-----``....oMM.....      dMh hMMNMN`
+           -MM+        dMM    mMM        MMmyyyyyyhMMo     :MMo    -mMm+.       MMy.+:      `MMs   .dMN+`         /MM       -+ -MM: -MMMMs
+        syyNMh         dMM    mMM        osssssssssMMo    +MMh       +dMMmy:    MMMMMo      .MMy/    /mMMdo:`     /MMmmmmm+/NMdmN+   hMMm.
+        shhho          dMM    mMM                  ``    .hMo          .+yd.   -NMh/`       +MMMmhs    :smMh.     `-------`  -:-`    `:`
                        ://    ://                          `                    .`             /:`          `                                     Follow the project : https://github.com/Ph3nX-Z/Shuriken \n"""
 liste_banner=[banner_ghost,banner_big,shuriken]
 
@@ -58,6 +58,8 @@ parse = argparse.ArgumentParser()
 parse.add_argument("-w","--wordlist", help="To specify the wordlist", required=True)
 parse.add_argument("-u", "--url", help="To specify the URL", required=True)
 parse.add_argument("-p", "--proxies", help="Add proxys", required=False)
+parse.add_argument("-P", "--pattern", help="To Specify a pattern (url), keep response that are differents", required=False, type=str)
+parse.add_argument("-b", "--bytechange", help="Specify a default size, kepp response that are differents (only for threads options)", required=False, type=int)
 parse.add_argument("-d", "--delay", help="Delay between each requests", required=False, type=int)
 parse.add_argument("-t", "--threads", help="It uses katana, proxy and delay will be ignored", required=False, type=int)
 args = parse.parse_args()
@@ -110,6 +112,19 @@ def fuzzer_delay(wordlist):
         elif response.status_code == 401:
             print('\033[93m' + f"[NINJA] Response : {i} ({response.status_code})[Size : {len(response.content)}] --> Authentication Panel"+'\033[0m')
 
+def fuzzer_pattern(wordlist):
+    pattern = session.get(args.pattern,headers={'Cache-Control': 'no-cache',"Pragma": "no-cache"})
+    for i in wordlist:
+        response = session.get(args.url.replace('NINJA',i),headers={'Cache-Control': 'no-cache',"Pragma": "no-cache"})
+        if response.status_code == 200:
+            if response.text != pattern.text:
+                print('\033[92m' + f"[NINJA] Response : {i} ({response.status_code})[Size : {len(response.content)}]"+'\033[0m')
+        elif response.status_code == 403:
+            if response.text != pattern.text:
+                print('\033[93m' + f"[NINJA] Response : {i} ({response.status_code})[Size : {len(response.content)}]"+'\033[0m')
+        elif response.status_code == 401:
+            if response.text != pattern.text:
+                print('\033[93m' + f"[NINJA] Response : {i} ({response.status_code})[Size : {len(response.content)}] --> Authentication Panel"+'\033[0m')
 
 ################################################################ Functions
 
@@ -153,15 +168,22 @@ else:
 ################################################################ Data processing
 
 ################################################################ Fuzzing
-if args.delay != None:
-    print(f"[+] Requests delay set to {args.delay} seconds")
+
 if args.threads != None:
     print(f"[+] Workers : {args.threads} workers")
 print('\033[94m'+f"[*] Fuzzing URL : {args.url}\n"+'\033[0m')
 if args.threads != None:
-    os.system(f"Katana -w {args.wordlist} -u {args.url} -t {args.threads}")
+    if args.bytechange != None:
+        os.system(f"Katana -w {args.wordlist} -u {args.url} -t {args.threads} --bytechange {args.bytechange}")
+    else:
+        os.system(f"Katana -w {args.wordlist} -u {args.url} -t {args.threads}")
+elif args.pattern != None:
+    print("[-] Delay set to 0, pattern option selected")
+    fuzzer_pattern(wordlist_data)
 elif args.delay == None:
+    print(f"[+] Requests delay set to {args.delay} seconds")
     fuzzer(wordlist_data)
+
 else:
     fuzzer_delay(wordlist_data)
 ################################################################ Fuzzing
