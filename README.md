@@ -62,7 +62,7 @@ _*Wordlist : 200 491 words*_
 ### Compatibility
 
 |  Options   | Shuriken | KATANA   |
-|-----------------------------------
+|----------------------------------|
 | proxy      | OO       |   XX     |
 | pattern    | OO       |   XX     |
 | bytechange | XX       |   OO     |
@@ -73,7 +73,7 @@ _*Wordlist : 200 491 words*_
 | Detected   | 40%      | 100%     |
 | For CTF    | No       | Yes      |
 | For Reco   | Yes      | No       |
-------------------------------------
+|----------------------------------|
 
 
 ## Media
